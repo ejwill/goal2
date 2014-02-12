@@ -1,0 +1,71 @@
+<html class="ui-mobile">
+<head>
+    <title>TODO App</title>
+    <meta charset="utf-8">
+	<!--telling the page the size it should take up -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<!--importing styleing from web can download files to speed up -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+	<!--importing scripts saved in scripts folder.  These take care of saving list items to HTML5 storage -->
+	<script src="scripts/json2.js"></script>
+    <script src="scripts/jquery.cookie.js"></script>
+    <script src="scripts/jquery.tmpl.js"></script>
+	<script src="scripts/to-do.js"></script>
+</head>
+<!--Now for the Content -->
+<body class="ui-mobile-viewport">
+<!--The first page ---the main one where you see the list -->
+<div id="mainPage" data-role="page" data-url="mainPage" class="ui-page ui-body-a ui-page-active">
+	<div data-role="header" class="ui-bar-a ui-header" role="banner">
+		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Mobile To-Do List</h1>
+        <a href="#addPage" data-role="button" data-icon="plus" class="ui-btn-left ui-btn ui-btn-up-a ui-btn-icon-left ui-btn-corner-all ui-shadow" data-theme="a"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">New</span><span class="ui-icon ui-icon-plus ui-icon-shadow"></span></span></a>
+	</div>
+	<div data-role="content" class="ui-content" role="main">
+	
+	<!--This is where the list is.  The li's below are the headers for the list.  The to-dos will be dynamically added to the list -->
+        <ul id="todoList" data-role="listview" class="ui-listview">
+            <li data-priority="2" data-role="list-divider" role="heading" data-theme="a" >Important</li>
+            <li data-priority="1" data-role="list-divider" role="heading" data-theme="a" >Normal</li>
+            <li data-priority="0" data-role="list-divider" role="heading" data-theme="a" >Low</li>
+        </ul>		
+	</div>
+	<!--The bottom of the page this will always be the lowest thing -->
+	<div data-role="footer">
+		<p>Beautiful Girls App</p>
+	</div>
+</div>
+
+<!--New page.  This is the page you get when you click the add button.  Notice how this is in the same file as the main page.  It is b/c it is a multipage setup. 
+ You could take all the contnet below and put it in its own file but you would have to change the link in the main page -->
+<div id="addPage" data-role="page" data-url="addPage" data-theme="a">
+    <div data-role="header">
+        <a href="#mainPage" data-role="button" data-icon="back">Back</a>
+        <h1>New To-Do</h1>
+        <a href="#mainPage" id="createButton" data-role="button" data-icon="plus">Create</a>
+    </div>
+	<!--this is where it asks for the you to enter text -->
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label for="todoDescription">Description:</label>
+            <input type="text" name="todoDescription" id="todoDescription" value="">
+        </div>
+		<!--this is where it asks you to select a level -->
+        <div data-role="fieldcontain">
+            <label for="todoUrgency" class="select">Urgency:</label>
+            <select name="todoUrgency" id="todoUrgency" data-native-menu="false">
+                <option value="2">Important</option>
+                <option value="1" selected="selected">Normal</option>
+                <option value="0">Low</option>
+            </select>
+        </div>        
+    </div>
+	<div data-role="footer">
+		<p>Beautiful Girls App</p>
+	</div>
+</div>
+
+
+<div class="ui-loader ui-body-a ui-corner-all" style="top: 497.5px;"><span class="ui-icon ui-icon-loading spin"></span><h1>loading</h1></div></body>
+</html>
